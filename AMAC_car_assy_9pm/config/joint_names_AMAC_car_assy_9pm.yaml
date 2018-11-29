@@ -1,0 +1,1 @@
+controller_joint_names: ['right_turn_rev', 'RF_wheel_cont', 'left_turn_rev', 'LF_wheel_cont', 'RB_wheel_cont', 'LB_wheel_cont', ]
