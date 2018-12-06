@@ -1,0 +1,656 @@
+<robot
+  name="AMAC_car_assy_urdf">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.022767 2.9168E-05 0.085768"
+        rpy="0 0 0" />
+      <mass
+        value="4.1135" />
+      <inertia
+        ixx="0.0027362"
+        ixy="1.564E-06"
+        ixz="-0.00040371"
+        iyy="0.0061299"
+        iyz="-5.2457E-06"
+        izz="0.0033938" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="RF_steering_block">
+    <inertial>
+      <origin
+        xyz="4.4409E-16 0.0080683 -9.6711E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.052985" />
+      <inertia
+        ixx="1"
+        ixy="0"
+        ixz="0"
+        iyy="1"
+        iyz="0"
+        izz="1" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/RF_steering_block.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/RF_steering_block.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RF_steering_joint"
+    type="revolute">
+    <origin
+      xyz="0.17938 -0.145 0.05762"
+      rpy="-2.7214E-16 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="RF_steering_block" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.7727"
+      upper="0.7727"
+      effort="10"
+      velocity="0" />
+  </joint>
+  <link
+    name="RF_wheel">
+    <inertial>
+      <origin
+        xyz="4.4409E-16 0.0080683 -9.6728E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.052985" />
+      <inertia
+        ixx="0.5"
+        ixy="0"
+        ixz="0"
+        iyy="1"
+        iyz="0"
+        izz="0.5" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/RF_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/RF_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RF_wheel_cont"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="-3.9618E-37 0 0" />
+    <parent
+      link="RF_steering_block" />
+    <child
+      link="RF_wheel" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="10"
+      velocity="100" />
+  </joint>
+  <link
+    name="LF_steering_block">
+    <inertial>
+      <origin
+        xyz="-5.5511E-16 -0.0080683 -7.2806E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.052985" />
+      <inertia
+        ixx="1"
+        ixy="0"
+        ixz="0"
+        iyy="1"
+        iyz="0"
+        izz="1" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/LF_steering_block.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/LF_steering_block.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LF_steering_joint"
+    type="revolute">
+    <origin
+      xyz="0.17938 0.145 0.05762"
+      rpy="-2.7214E-16 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="LF_steering_block" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.7727"
+      upper="0.7727"
+      effort="10"
+      velocity="0" />
+  </joint>
+  <link
+    name="LF_wheel">
+    <inertial>
+      <origin
+        xyz="-6.1062E-16 -0.0080683 -7.2806E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.052985" />
+      <inertia
+        ixx="0.5"
+        ixy="0"
+        ixz="0"
+        iyy="1"
+        iyz="0"
+        izz="0.5" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/LF_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/LF_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LF_wheel_cont"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="-3.9618E-37 0 0" />
+    <parent
+      link="LF_steering_block" />
+    <child
+      link="LF_wheel" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="10"
+      velocity="100" />
+  </joint>
+  <link
+    name="RB_wheel">
+    <inertial>
+      <origin
+        xyz="2.3419E-16 0.0080683 -8.1879E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.052985" />
+      <inertia
+        ixx="0.5"
+        ixy="0"
+        ixz="0"
+        iyy="1"
+        iyz="0"
+        izz="0.5" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/RB_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/RB_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RB_wheel_cont"
+    type="continuous">
+    <origin
+      xyz="-0.13862 -0.145 0.05762"
+      rpy="-2.7214E-16 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="RB_wheel" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="10"
+      velocity="100" />
+  </joint>
+  <link
+    name="LB_wheel">
+    <inertial>
+      <origin
+        xyz="-3.6429E-17 -0.0080683 1.7104E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.052985" />
+      <inertia
+        ixx="0.5"
+        ixy="0"
+        ixz="0"
+        iyy="1"
+        iyz="0"
+        izz="0.5" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/LB_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/LB_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LB_wheel_cont"
+    type="continuous">
+    <origin
+      xyz="-0.13862 0.145 0.05762"
+      rpy="-2.7214E-16 -1.1102E-16 -4.9304E-32" />
+    <parent
+      link="base_link" />
+    <child
+      link="LB_wheel" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="10"
+      velocity="100" />
+  </joint>
+  <link
+    name="lidar_link">
+    <inertial>
+      <origin
+        xyz="0 5.5329E-16 0.030288"
+        rpy="0 0 0" />
+      <mass
+        value="0.45597" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/lidar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.65882 0.61961 0.56078 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_base_fix"
+    type="fixed">
+    <origin
+      xyz="-0.045 6.0708E-05 0.18324"
+      rpy="1.3989E-32 -4.4411E-16 -1.6092E-16" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="IMU_base">
+    <inertial>
+      <origin
+        xyz="-0.0005061 0.0026764 -0.0095809"
+        rpy="0 0 0" />
+      <mass
+        value="0.010464" />
+      <inertia
+        ixx="3.6973E-07"
+        ixy="6.2867E-08"
+        ixz="5.3981E-10"
+        iyy="2.7656E-07"
+        iyz="2.4781E-09"
+        izz="4.1597E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/IMU_base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/IMU_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="IMU_fix"
+    type="fixed">
+    <origin
+      xyz="0.155326383380844 -0.00344999989920807 0.1873276"
+      rpy="-2.72136117822987E-16 -1.66574825737217E-16 1.90098110802259E-16" />
+    <parent
+      link="base_link" />
+    <child
+      link="IMU_base" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="left_cam">
+    <inertial>
+      <origin
+        xyz="0.00017008 -4.1479E-05 0.0037129"
+        rpy="0 0 0" />
+      <mass
+        value="0.0057446" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/left_cam.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/left_cam.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_cam_fix"
+    type="fixed">
+    <origin
+      xyz="0.230799857347092 0.053407273193876 0.14724"
+      rpy="1.5707963267949 1.21633300766805E-15 2.26892802759263" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_cam" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="mid_cam">
+    <inertial>
+      <origin
+        xyz="0.00017008 -4.1478E-05 0.0037129"
+        rpy="0 0 0" />
+      <mass
+        value="0.0057446" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/mid_cam.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/mid_cam.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="mid_cam_fix"
+    type="fixed">
+    <origin
+      xyz="0.24638 0.00035411 0.14724"
+      rpy="1.5708 2.7212E-16 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="mid_cam" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_cam">
+    <inertial>
+      <origin
+        xyz="0.00017008 -4.1479E-05 0.0037129"
+        rpy="0 0 0" />
+      <mass
+        value="0.0057446" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/right_cam.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AMAC_car_assy_urdf/meshes/right_cam.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_cam_fix"
+    type="fixed">
+    <origin
+      xyz="0.23088 -0.053472 0.14724"
+      rpy="1.5708 1.886E-15 0.87266" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_cam" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
