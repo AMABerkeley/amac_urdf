@@ -1,0 +1,338 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rover">
+  <joint name="front_left_steering_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="front_left_wheel_steering_block"/>
+    <origin rpy="-1.52 0 0" xyz="1.20222  0.5 0.35515"/>
+    <axis xyz="0  -1  0"/>
+    <limit effort="10.0" lower="-0.7727" upper="0.7727" velocity="0.0"/>
+  </joint>
+  <joint name="front_right_steering_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="front_right_wheel_steering_block"/>
+    <origin rpy="1.52 0 0" xyz="1.20222 -0.5 0.35515"/>
+    <axis xyz="0  1  0"/>
+    <limit effort="10.0" lower="-0.7727" upper="0.7727" velocity="0.0"/>
+  </joint>
+  <joint name="front_left_wheel_joint" type="revolute">
+    <parent link="front_left_wheel_steering_block"/>
+    <child link="front_left_wheel"/>
+    <origin rpy="0 0 0" xyz="0 0 0.21562"/>
+    <axis xyz="0.00000000e+00 8.30000000e-04 1.00000000e+00"/>
+    <limit effort="10.0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="front_right_wheel_joint" type="revolute">
+    <parent link="front_right_wheel_steering_block"/>
+    <child link="front_right_wheel"/>
+    <origin rpy="0 0 0" xyz="0 0 0.21562"/>
+    <axis xyz="0.00000000e+00 8.30000000e-04 -1.00000000e+00"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="rear_left_wheel_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="rear_left_wheel"/>
+    <origin rpy="-1.52 0 0" xyz="-0.75 0.75 0.34697"/>
+    <axis xyz="0.00000000e+00 8.30000000e-04 1.00000000e+00"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="rear_right_wheel_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="rear_right_wheel"/>
+    <origin rpy="1.52 0 0" xyz="-0.75 -0.75 0.34697"/>
+    <axis xyz="0.00000000e+00 8.30000000e-04 -1.00000000e+00"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+
+  <link name="lidar_link">
+    <inertial>
+      <origin xyz="0 5.5329E-16 0.030288" rpy="0 0 0" />
+      <mass value="0.45597" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/lidar_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.65882 0.61961 0.56078 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="lidar_base_fix" type="fixed">
+    <origin xyz="-0.045 6.0708E-05 0.18324" rpy="1.3989E-32 -4.4411E-16 -1.6092E-16" />
+    <parent link="base_link" />
+    <child link="lidar_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="IMU_base">
+    <inertial>
+      <origin xyz="-0.0005061 0.0026764 -0.0095809" rpy="0 0 0" />
+      <mass value="0.010464" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/IMU_base.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/IMU_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="IMU_fix" type="fixed">
+    <origin xyz="0.155326383380844 -0.00344999989920807 0.1873276" rpy="-2.72136117822987E-16 -1.66574825737217E-16 1.90098110802259E-16" />
+    <parent link="base_link" />
+    <child link="IMU_base" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="left_cam">
+    <inertial>
+      <origin xyz="0.00017008 -4.1479E-05 0.0037129" rpy="0 0 0" />
+      <mass value="0.0057446" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/left_cam.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/left_cam.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_cam_fix" type="fixed">
+    <origin xyz="0.230799857347092 0.053407273193876 0.14724" rpy="1.5707963267949 1.21633300766805E-15 2.26892802759263" />
+    <parent link="base_link" />
+    <child link="left_cam" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="mid_cam">
+    <inertial>
+      <origin xyz="0.00017008 -4.1478E-05 0.0037129" rpy="0 0 0" />
+      <mass value="0.0057446" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/mid_cam.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/mid_cam.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="mid_cam_fix" type="fixed">
+    <origin xyz="0.24638 0.00035411 0.14724" rpy="1.5708 2.7212E-16 1.5708" />
+    <parent link="base_link" />
+    <child link="mid_cam" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="right_cam">
+    <inertial>
+      <origin xyz="0.00017008 -4.1479E-05 0.0037129" rpy="0 0 0" />
+      <mass value="0.0057446" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/right_cam.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/right_cam.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_cam_fix" type="fixed">
+    <origin xyz="0.23088 -0.053472 0.14724" rpy="1.5708 1.886E-15 0.87266" />
+    <parent link="base_link" />
+    <child link="right_cam" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="base_link">
+    <inertial>
+      <mass value="800.0"/>
+      <origin rpy="0 0 0" xyz="0.1 0 0.4"/>
+      <inertia ixx="140" ixy="0.0" ixz="0.0" iyy="550" iyz="0.0" izz="550"/>
+    </inertial>
+    <collision name="base_link_bottom">
+      <origin rpy="0 0 0" xyz="0.2 0 0.335"/>
+      <geometry>
+        <box size="1.34 1.0 0.06"/>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <origin rpy="-1.5708 0 3.1416" xyz="0.2 1.96 0.26"/>
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/base_link.STL"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="front_left_wheel">
+    <inertial>
+      <mass value="20"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <collision name="collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.2794" radius="0.3175"/>
+      </geometry>
+    </collision>
+    <visual name="tire_visual">
+      <origin rpy="3.1416 0 0" xyz="-1.2 -0.1 1.67"/>
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/LF_wheel.STL"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="front_right_wheel">
+    <inertial>
+      <mass value="20"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <collision name="collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.2794" radius="0.3175"/>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <origin rpy="3.1416 0 0" xyz="1.25 -0.1 1.67"/>
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/RF_wheel.STL"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="rear_left_wheel">
+    <inertial>
+      <mass value="20"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <collision name="collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.2794" radius="0.3175"/>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <origin rpy="0 0 0" xyz="1.25 0.1 -3.33"/>
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/LB_wheel.STL"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="rear_right_wheel">
+    <inertial>
+      <mass value="20"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <collision name="collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.2794" radius="0.3175"/>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <origin rpy="0 0 0" xyz="1.25 0.1 -3.33"/>
+      <geometry>
+        <mesh filename="package://amac_car_assy_urdf/meshes/RB_wheel.STL"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <gazebo reference="rear_left_wheel">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <fdir1>1 0 0</fdir1>
+    <kp>1e6</kp>
+  </gazebo>
+  <gazebo reference="rear_right_wheel">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <fdir1>1 0 0</fdir1>
+    <kp>1e6</kp>
+  </gazebo>
+
+  <gazebo reference="front_left_wheel">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <fdir1>1 0 0</fdir1>
+    <kp>1e7</kp>
+  </gazebo>
+
+  <gazebo reference="front_right_wheel">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <fdir1>1 0 0</fdir1>
+    <kp>1e7</kp>
+  </gazebo>
+
+  <link name="front_right_wheel_steering_block">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <collision name="collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.01" radius="0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="front_left_wheel_steering_block">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <collision name="collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.01" radius="0.05"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+</robot>
