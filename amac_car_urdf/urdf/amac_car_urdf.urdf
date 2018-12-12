@@ -1,0 +1,208 @@
+<robot
+  name="amac_car_urdf">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.017409 7.506E-05 0.097081"
+        rpy="0 0 0" />
+      <mass
+        value="4.9413" />
+      <inertia
+        ixx="0.01423"
+        ixy="-4.6637E-06"
+        ixz="0.0027436"
+        iyy="0.021989"
+        iyz="-2.659E-05"
+        izz="0.015812" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://amac_car_urdf/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://amac_car_urdf/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="left_turn" />
+  <joint
+    name="left_turn_rev"
+    type="fixed">
+    <origin
+      xyz="0.179375934223987 0.145 0.0576199999999976"
+      rpy="-1.26942862491109E-14 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_turn" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="LF_wheel" />
+  <joint
+    name="LF_wheel_cont"
+    type="fixed">
+    <origin
+      xyz="0.179375934223987 0.145 0.0576199999999976"
+      rpy="-1.26942862491109E-14 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="LF_wheel" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_turn" />
+  <joint
+    name="right_turn_rev"
+    type="fixed">
+    <origin
+      xyz="0.179375934223987 -0.145 0.0576200000000013"
+      rpy="-1.26942862491109E-14 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_turn" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="RF_wheel" />
+  <joint
+    name="RF_wheel_cont"
+    type="fixed">
+    <origin
+      xyz="0.179375934223987 -0.145 0.0576200000000013"
+      rpy="-1.26942862491109E-14 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="RF_wheel" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="LB_wheel" />
+  <joint
+    name="LB_wheel_cont"
+    type="fixed">
+    <origin
+      xyz="-0.138624065776013 0.145000000000001 0.0576199999999976"
+      rpy="-1.31383961449827E-14 -1.22464679914737E-16 -6.24964582428108E-17" />
+    <parent
+      link="base_link" />
+    <child
+      link="LB_wheel" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="RB_wheel" />
+  <joint
+    name="RB_wheel_cont"
+    type="fixed">
+    <origin
+      xyz="-0.138624065776013 -0.145 0.0576200000000012"
+      rpy="-1.26942862491109E-14 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="RB_wheel" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="IMU_base" />
+  <joint
+    name="IMU_base_fix"
+    type="fixed">
+    <origin
+      xyz="0.149436934223987 0 0.186972"
+      rpy="-3.14159265358979 -2.40256001449299E-32 1.89016148541661E-16" />
+    <parent
+      link="base_link" />
+    <child
+      link="IMU_base" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="lidar_base" />
+  <joint
+    name="lidar_base_fix"
+    type="fixed">
+    <origin
+      xyz="-0.0449999999999999 6.07078510302048E-05 0.18324"
+      rpy="6.84548524969485E-16 -2.40256001449299E-32 1.89016148541661E-16" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar_base" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_cam" />
+  <joint
+    name="left_cam_fix"
+    type="fixed">
+    <origin
+      xyz="0.230799857347095 0.0534072731938771 0.14724"
+      rpy="1.5707963267949 1.02467805678951E-15 2.26892802759263" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_cam" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="mid_cam" />
+  <joint
+    name="mid_cam_fix"
+    type="fixed">
+    <origin
+      xyz="0.246375934223987 0.000354105384235911 0.147240000000001"
+      rpy="1.5707963267949 3.94580111716E-16 1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="mid_cam" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_cam" />
+  <joint
+    name="right_cam_fix"
+    type="fixed">
+    <origin
+      xyz="0.230876461791408 -0.0534715519548394 0.147240000000001"
+      rpy="1.5707963267949 2.26526587045312E-15 0.872664625997166" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_cam" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
