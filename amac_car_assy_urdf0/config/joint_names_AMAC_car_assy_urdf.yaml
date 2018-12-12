@@ -1,1 +1,0 @@
-controller_joint_names: ['RF_steering_joint', 'RF_wheel_cont', 'LF_steering_joint', 'LF_wheel_cont', 'RB_wheel_cont', 'LB_wheel_cont', ]
